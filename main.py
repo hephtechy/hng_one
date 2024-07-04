@@ -5,6 +5,10 @@ import requests
 
 app = FastAPI()
 
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+
 @app.get("/api/hello")
 async def hello(request: Request, visitor_name: str = Query(..., alias='visitor_name')):
     url = "https://api.geoapify.com/v1/ipinfo?apiKey=1b12fda6b84d4f658f751913397c291f"
